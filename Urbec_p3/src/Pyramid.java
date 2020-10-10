@@ -18,7 +18,7 @@ public class Pyramid extends Shape3D{
 
     @Override
     public String getName() {
-        return "Pyramid";
+        return "pyramid";
     }
 
     @Override

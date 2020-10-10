@@ -9,7 +9,7 @@ public class Triangle extends Shape2D{
 
     @Override
     public String getName() {
-        return "Triangle";
+        return "triangle";
     }
 
     @Override

@@ -7,7 +7,7 @@ public class Square extends Shape2D{
 
     @Override
     public String getName() {
-        return "Square";
+        return "square";
     }
 
     @Override

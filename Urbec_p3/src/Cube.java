@@ -12,7 +12,7 @@ public class Cube extends Shape3D{
 
     @Override
     public String getName() {
-        return "Cube";
+        return "cube";
     }
 
     @Override
