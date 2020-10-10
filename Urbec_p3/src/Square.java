@@ -7,11 +7,11 @@ public class Square extends Shape2D{
 
     @Override
     public String getName() {
-        return null;
+        return "Square";
     }
 
     @Override
     public double getArea() {
-        return 0;
+        return length * length;
     }
 }

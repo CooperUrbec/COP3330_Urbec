@@ -7,16 +7,16 @@ public class Cube extends Shape3D{
 
     @Override
     public double getVolume() {
-        return 0;
+        return length * length * length;
     }
 
     @Override
     public String getName() {
-        return null;
+        return "Cube";
     }
 
     @Override
     public double getArea() {
-        return 0;
+        return 6.0 * (length * length);
     }
 }

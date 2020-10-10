@@ -7,16 +7,16 @@ public class Sphere extends Shape3D{
 
     @Override
     public double getVolume() {
-        return 0;
+        return (4.0 / 3.0) * 3.14 * (radius * radius * radius);
     }
 
     @Override
     public String getName() {
-        return null;
+        return "Sphere";
     }
 
     @Override
     public double getArea() {
-        return 0;
+        return 4.0 * 3.14 * (radius * radius);
     }
 }

@@ -9,11 +9,11 @@ public class Triangle extends Shape2D{
 
     @Override
     public String getName() {
-        return null;
+        return "Triangle";
     }
 
     @Override
     public double getArea() {
-        return 0;
+        return 0.5 * base * height;
     }
 }

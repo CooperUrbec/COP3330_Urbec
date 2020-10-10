@@ -7,11 +7,11 @@ public class Circle extends Shape2D{
 
     @Override
     public String getName() {
-        return null;
+        return "Circle";
     }
 
     @Override
     public double getArea() {
-        return 0;
+        return 3.14 * (radius * radius);
     }
 }
