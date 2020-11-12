@@ -47,8 +47,8 @@ public class TaskList {
         return "";
     }
 
-    public String getTaskStatus(int index){
-        return "";
+    public boolean getTaskStatus(int index){
+        return false;
     }
 
     public int getListSize(){
