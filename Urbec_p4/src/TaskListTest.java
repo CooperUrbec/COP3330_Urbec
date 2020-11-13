@@ -7,14 +7,14 @@ class TaskListTest {
     public void addingTaskItemsIncreasesSize(){
         TaskList list = new TaskList();
         int size = list.getListSize();
-        list.addTask("task", "1", "2020-10-6");
+        list.addTask("task", "1", "2020-10-06");
         assert(list.getListSize() == size + 1);
     }
 
     @Test
     public void completingTaskItemChangesStatus(){
         TaskList list = new TaskList();
-        list.addTask("task", "1", "2020-10-6");
+        list.addTask("task", "1", "2020-10-06");
         boolean status = list.getTaskStatus(0);
         list.setTaskCompletion(0, true);
         assert(list.getTaskStatus(0) != status);
@@ -157,7 +157,13 @@ class TaskListTest {
 
     @Test
     public void savedTaskListCanBeLoaded(){
+        String filePath = "test.txt";
+        TaskList list = new TaskList();
+        list.addTask("task", "1", "2020-10-06");
+        list.saveList(filePath);
 
+        TaskList list2 = new TaskList(filePath);
+        assert(list2.getTaskTitle(0).equals(list.getTaskTitle(0)));
     }
 
     @Test

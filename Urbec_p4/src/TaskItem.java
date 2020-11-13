@@ -54,6 +54,7 @@ public class TaskItem {
     public void setStatus(boolean completed){
         if(completed){
             this.status = "*** ";
+            return;
         }
 
         this.status = "";
@@ -89,6 +90,10 @@ public class TaskItem {
 
     public String getDate(){
         return this.date.toString();
+    }
+
+    public String getStatus(){
+        return this.status;
     }
 
     @Override
