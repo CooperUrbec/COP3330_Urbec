@@ -5,63 +5,48 @@ public class TaskItem {
     private String title;
     private String description;
     private LocalDate date;
-    private String status;
+    private boolean status;
 
     public static TaskItem getNewTaskItemInstance(String title, String description, String date){
 
-        if(isValidTitle(title) == false){
+        if(!isValidTitle(title)){
             System.out.println("WARNING: title must be at least 1 character long; task not created.");
             return null;
         }
 
-        if(isValidDate(date) == false){
+        if(!isValidDate(date)){
             System.out.println("WARNING: invalid due date; task not created.");
             return null;
         }
 
-        TaskItem returnVal = new TaskItem(title, description, date);
-
-        return returnVal;
+        return new TaskItem(title, description, date);
     }
 
     private TaskItem(String title, String description, String date){
         this.title = title;
         this.description = description;
         this.date = LocalDate.parse(date);
-        this.status = "";
+        this.status = false;
     }
 
-    public void setTitle(String newTitle){
-
-        if(isValidTitle(newTitle)){
-            this.title = newTitle;
+    public void editTask(String newTitle, String newDescription, String newDate){
+        if(!isValidTitle(newTitle)){
+            System.out.println("WARNING: title must be at least 1 character long; title not changed.");
+            return;
+        }
+        if(!isValidDate(newDate)){
+            System.out.println("WARNING: invalid due date; date not changed.");
             return;
         }
 
-        System.out.println("WARNING: title must be at least 1 character long; title not changed.");
-    }
+        this.title = newTitle;
+        this.description = newDescription;
+        this.date = LocalDate.parse(newDate);
 
-    public void setDate(String newDate){
-
-        if(isValidDate(newDate)){
-            this.date = LocalDate.parse(newDate);
-            return;
-        }
-
-        System.out.println("WARNING: invalid due date; date not changed.");
     }
 
     public void setStatus(boolean completed){
-        if(completed){
-            this.status = "*** ";
-            return;
-        }
-
-        this.status = "";
-    }
-
-    public void setDescription(String newDescription){
-        this.description = newDescription;
+        this.status = completed;
     }
 
     private static boolean isValidTitle(String str){
@@ -92,13 +77,13 @@ public class TaskItem {
         return this.date.toString();
     }
 
-    public String getStatus(){
+    public boolean getStatus(){
         return this.status;
     }
 
     @Override
     public String toString(){
 
-        return this.status + "[" + this.date.toString() + "] " + this.title + ": " + this.description;
+        return "[" + this.date.toString() + "] " + this.title + ": " + this.description;
     }
 }

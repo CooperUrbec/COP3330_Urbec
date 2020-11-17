@@ -34,7 +34,7 @@ class TaskListTest {
         TaskList list = new TaskList();
         list.addTask("task", "1", "2020-10-06");
         String description = list.getTaskDescription(0);
-        list.changeTaskDescription(0, "2");
+        list.editTask(0,"task", "2", "2020-10-06");
         assert(!list.getTaskDescription(0).equals(description));
     }
 
@@ -43,7 +43,7 @@ class TaskListTest {
         TaskList list = new TaskList();
         list.addTask("task", "1", "2020-10-06");
         String description = list.getTaskDescription(0);
-        list.changeTaskDescription(5, "2");
+        list.editTask(5,"task", "2", "2020-10-06");
         assert(list.getTaskDescription(0).equals(description));
     }
 
@@ -52,7 +52,7 @@ class TaskListTest {
         TaskList list = new TaskList();
         list.addTask("task", "1", "2020-10-06");
         String dueDate = list.getTaskDueDate(0);
-        list.changeTaskDueDate(0, "2020-06-08");
+        list.editTask(0,"task", "1", "2020-11-23");
         assert(!list.getTaskDueDate(0).equals(dueDate));
     }
 
@@ -61,7 +61,7 @@ class TaskListTest {
         TaskList list = new TaskList();
         list.addTask("task", "1", "2020-10-06");
         String dueDate = list.getTaskDueDate(0);
-        list.changeTaskDueDate(4, "2020-06-08");
+        list.editTask(3,"task", "1", "2020-11-23");
         assert(list.getTaskDueDate(0).equals(dueDate));
     }
 
@@ -70,7 +70,7 @@ class TaskListTest {
         TaskList list = new TaskList();
         list.addTask("task", "1", "2020-10-06");
         String title = list.getTaskTitle(0);
-        list.changeTaskTitle(0, "task1");
+        list.editTask(0,"task1", "1", "2020-10-06");
         assert(!list.getTaskTitle(0).equals(title));
     }
 
@@ -79,7 +79,7 @@ class TaskListTest {
         TaskList list = new TaskList();
         list.addTask("task", "1", "2020-10-06");
         String title = list.getTaskTitle(0);
-        list.changeTaskTitle(4, "task1");
+        list.editTask(4,"task1", "1", "2020-10-06");
         assert(list.getTaskTitle(0).equals(title));
     }
 
@@ -160,9 +160,13 @@ class TaskListTest {
         String filePath = "test.txt";
         TaskList list = new TaskList();
         list.addTask("task", "1", "2020-10-06");
+        list.setTaskCompletion(0, true);
+        list.printList();
         list.saveList(filePath);
 
-        TaskList list2 = new TaskList(filePath);
+        TaskList list2 = new TaskList();
+        list2.loadList(filePath);
+        list2.printList();
         assert(list2.getTaskTitle(0).equals(list.getTaskTitle(0)));
     }
 
